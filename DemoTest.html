@@ -1,0 +1,45 @@
+<p>Input your wallet address to reveal your Status in Crypto Industry</p>
+<input type="text" id="inputNumber">
+<input type="submit" id="submit">
+<br>
+<img id="image" src="dogesad.png" width="256" height="256">
+<br>
+<div >Debug Msg</div>
+<div id="data-display">Submit to Reveal</div>
+
+
+<script type="text/javascript">
+document.getElementById("submit").addEventListener("click", function() {
+	const dataDisplay = document.getElementById('data-display');
+	var inputValue = Number(document.getElementById("inputNumber").value);
+	var imageElement = document.getElementById("image");
+  
+	const options = {
+		method: 'POST',
+		headers: {
+		accept: 'application/json',
+		apikey: 'apikey',
+		'content-type': 'application/json'
+		},
+	body: JSON.stringify({sqlText: 'aaaa'})
+	};
+  
+  fetch('https://proxy.api.spaceandtime.app/v1/sql', options)
+  .then(response => response.json())
+  //.then(response => console.log(response))
+  .then(data => {dataDisplay.textContent = JSON.stringify(data);})
+  .catch(err => console.error(err));
+
+  if (inputValue === 1) {
+    imageElement.src = "seed.jpg";
+  } else if (inputValue === 2) {
+    imageElement.src = "leek.jpg";
+  } else if (inputValue === 3) {
+    imageElement.src = "leek_end.jpg";
+  } else {
+    imageElement.src = ""; // 默认图片
+  }
+  
+});
+
+</script>
